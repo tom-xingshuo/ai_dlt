@@ -1,0 +1,6 @@
+# For exe
+python -m nuitka --windows-product-version=0.0.0.1 --windows-product-name=dlt  --standalone --remove-output --mingw64 --show-memory --show-progress  --enable-plugin=pyqt5 --onefile --windows-disable-console    --follow-import-to=full_data,utils  --output-dir=exe shrink_tool.py
+
+
+
+

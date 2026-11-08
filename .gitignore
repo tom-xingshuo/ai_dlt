@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Nuitka 打包产物（可由构建脚本重新生成）
+build/
+exe/
+nuitka-crash-report.xml
+*.pdb
+
+# Flutter 构建缓存与临时文件（可由 flutter build 重新生成）
+flutter_application_1/.dart_tool/
+flutter_application_1/build/
+flutter_application_1/windows/flutter/ephemeral/
+
+# IDE / 系统
+.idea/
+.DS_Store
+Thumbs.db
