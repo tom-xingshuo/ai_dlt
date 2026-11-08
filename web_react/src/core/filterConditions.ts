@@ -67,6 +67,12 @@ function countInFlags(f: Uint8Array, nums: number[]): number {
   return c;
 }
 
+function countTails(f: Uint8Array, nums: number[]): number {
+  let c = 0;
+  for (const n of nums) c += f[n % 10];
+  return c;
+}
+
 function countInRange([lo, hi]: Range, nums: number[]): number {
   let c = 0;
   for (const n of nums) if (n >= lo && n <= hi) c += 1;
@@ -247,7 +253,7 @@ export function buildMatcher(cfg: Settings): (nums: number[]) => boolean {
       let violations = 0;
       let kinds = 0;
       for (let i = 0; i < tailWxFlags.length; i += 1) {
-        const c = countInFlags(tailWxFlags[i], nums);
+        const c = countTails(tailWxFlags[i], nums);
         if (c >= cfg.tailwxLimits[i][0] && c <= cfg.tailwxLimits[i][1]) {
           if (c) kinds += 1;
         } else {
@@ -260,7 +266,7 @@ export function buildMatcher(cfg: Settings): (nums: number[]) => boolean {
 
     if (cfg.tailcolorFilter) {
       for (let i = 0; i < tailColorFlags.length; i += 1) {
-        const c = countInFlags(tailColorFlags[i], nums);
+        const c = countTails(tailColorFlags[i], nums);
         if (c < cfg.tailcolorLimits[i][0] || c > cfg.tailcolorLimits[i][1]) return false;
       }
     }
